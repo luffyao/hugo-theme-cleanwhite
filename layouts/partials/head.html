@@ -44,8 +44,12 @@
     <meta property="twitter:card" content="summary" />
     {{ end }}
     <!-- end ogp -->
+    {{ if .Params.keywords }}
+    <meta name="keywords" content="{{ delimit .Params.keywords "," }}">
+    {{ else }}
+    <meta name="keywords"  content="{{ delimit .Site.Params.keyword "," }}">
+    {{ end }}
 
-    <meta name="keyword"  content="{{ .Site.Params.keyword }}">
     <link rel="shortcut icon" href="{{ "img/favicon.ico" | relURL }}">
 
     <title>{{ if .Title }}{{ .Title }} | {{ .Site.Params.SEOTitle }}{{ else }}{{ .Site.Params.SEOTitle }}{{ end }}</title>
